@@ -153,8 +153,8 @@ class StartCommand extends Command
             'nbproject/configs/cli.properties',
             'nbproject/configs/localhost.properties',
             'src/DummyClass.php',
-            'test/bootstrap.php',
-            'test/DummyTest.php',
+            'tests/bootstrap.php',
+            'tests/DummyTest.php',
         );
 
         if (!$input->getOption('no-repo')) {
@@ -163,7 +163,7 @@ class StartCommand extends Command
             $git = $wrapper->init($dir);
 
             $srcDir = str_replace('\\', '/', $ns);
-            $testDir = $dir . '/test/' . $srcDir . '/Test';
+            $testDir = $dir . '/tests/' . $srcDir . '/Test';
 
             $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
             $this->fs->mkdir($dir . '/nbproject/configs', 0755);
@@ -185,8 +185,8 @@ class StartCommand extends Command
             $this->fs->rename($dir . '/DummyProject.sublime-project', $dir . '/' . $label . '.sublime-project');
 
             // Rename the dummy test and add it to the repo
-            $this->fs->rename($dir . '/test/DummyTest.php', $testDir . '/DummyTest.php');
-            $git->add('test/' . $srcDir . '/Test/DummyTest.php');
+            $this->fs->rename($dir . '/tests/DummyTest.php', $testDir . '/DummyTest.php');
+            $git->add('tests/' . $srcDir . '/Test/DummyTest.php');
 
             $git->commit('Initial commit.');
             $git->remote('add', 'origin', 'git@github.com:' . $projectName . '.git');
