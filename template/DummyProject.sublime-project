@@ -1,0 +1,24 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"tmp",
+				"nbproject",
+				"logs",
+				"cache"
+			],
+			"follow_symlinks": true,
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "nbproject"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "tmp"
+		}
+	]
+}

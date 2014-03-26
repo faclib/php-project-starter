@@ -147,6 +147,11 @@ class StartCommand extends Command
             'composer.json',
             'phpmd.xml',
             'phpunit.xml',
+            'DummyProject.sublime-project',
+            'nbproject/project.xml',
+            'nbproject/project.properties',
+            'nbproject/configs/cli.properties',
+            'nbproject/configs/localhost.properties',
             'src/DummyClass.php',
             'test/bootstrap.php',
             'test/DummyTest.php',
@@ -161,6 +166,7 @@ class StartCommand extends Command
             $testDir = $dir . '/test/' . $srcDir . '/Test';
 
             $this->fs->mkdir($dir . '/src/' . $srcDir, 0755);
+            $this->fs->mkdir($dir . '/nbproject/configs', 0755);
             $this->fs->mkdir($testDir, 0755);
 
             // Move all files, add everything except dummy files
@@ -175,6 +181,8 @@ class StartCommand extends Command
             $classFilepath = 'src/' . $srcDir . '/' . $class . '.php';
             $this->fs->rename($dir . '/src/DummyClass.php', $dir . '/' . $classFilepath);
             $git->add($classFilepath);
+
+            $this->fs->rename($dir . '/DummyProject.sublime-project', $dir . '/' . $label . '.sublime-project');
 
             // Rename the dummy test and add it to the repo
             $this->fs->rename($dir . '/test/DummyTest.php', $testDir . '/DummyTest.php');
