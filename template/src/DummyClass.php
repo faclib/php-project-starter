@@ -1,7 +1,16 @@
 <?php
+/**
+ * {{ project.class }} class  - {{ project.class }}.php file
+ *
+ * @author     {{ copyright.holders }} <{{ copyright.email }}>
+ * @copyright  Copyright (c) {{ copyright.year }} {{ copyright.holders }}
+ */
 
 namespace {{ project.namespace }};
 
+/**
+ * {{ project.class }} class
+ */
 class {{ project.class }}
 {
     /**

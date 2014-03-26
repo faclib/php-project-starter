@@ -122,6 +122,7 @@ class StartCommand extends Command
         $desc    = $input->getOption('description') ?: '';
         $year    = $input->getOption('copyright-year') ?: date('Y');
         $copy    = $this->getCopyrightHoldersOption($wrapper, $input->getOption('copyright-holders'));
+        $email   = rtrim($wrapper->git('config --get --global user.email'));
         $ns      = $this->getCamelCaseName($input->getOption('namespace'), $name);
         $class   = $this->getCamelCaseName($input->getOption('class'), $name);
 
@@ -134,6 +135,7 @@ class StartCommand extends Command
           '{{ project.class }}'         => $class,
           '{{ copyright.year }}'        => $year,
           '{{ copyright.holders }}'     => $copy,
+          '{{ copyright.email }}'       => $email,
         );
 
         $filenames = array(
