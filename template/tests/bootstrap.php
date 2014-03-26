@@ -7,5 +7,5 @@ if (!file_exists($autoloadFile)) {
 require_once $autoloadFile;
 
 $loader = new \Composer\Autoload\ClassLoader();
-$loader->add('{{ project.namespace }}\Test', 'test');
+$loader->add('{{ project.namespace }}\Test', 'tests');
 $loader->register();
