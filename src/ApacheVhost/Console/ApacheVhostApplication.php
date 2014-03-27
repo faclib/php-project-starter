@@ -13,7 +13,7 @@ class ApacheVhostApplication extends Application
      */
     protected $fs;
 
-    public function __construct(Filesystem $fs, $name = 'UNKNOWN', $version = 'UNKNOWN')
+    public function __construct(Filesystem $fs, $name = 'UNKNOWN', $version = '0.1')
     {
         $this->fs = $fs;
         parent::__construct($name, $version);
@@ -34,9 +34,9 @@ class ApacheVhostApplication extends Application
         return $inputDefinition;
     }
 
-    // protected function getCommandName(InputInterface $input)
-    // {
-    //     return 'update';
-    // }
+    protected function getCommandName(InputInterface $input)
+    {
+        return 'update';
+    }
 
 }

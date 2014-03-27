@@ -32,23 +32,28 @@ class UpdateCommand extends Command
     {
         $this
             ->setName('update')
-            ->setDescription('Start a new PHP project.')
+            ->setDescription('Поиск и обновление виртуальных хостов.')
             ->addArgument(
-               'search',
+               'search-dir',
                InputArgument::REQUIRED,
-               'The project\'s name in vendor/project format'
+               'Директория поиска'
+            )
+            ->addArgument(
+                'file-config',
+                InputArgument::REQUIRED, //InputArgument::OPTIONAL,
+                'Файл конфигурации'
             )
             ->addOption(
                'domain-prefix',
                 null,
                InputOption::VALUE_REQUIRED,
-               'The project\'s display name, e.g. "My Project", defaults to the project name'
+               'Префикс к доменым именам'
             )
             ->addOption(
                'domain-suffix',
                 null,
                InputOption::VALUE_REQUIRED,
-               'The project\'s display name, e.g. "My Project", defaults to the project name'
+               'Суффикс к доменым именам'
             )
         ;
     }
