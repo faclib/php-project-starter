@@ -15,11 +15,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
-/**
- * UpdateCommand class
- *
- * @package   App
- */
 class UpdateCommand extends Command
 {
     /**

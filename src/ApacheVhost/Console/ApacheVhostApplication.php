@@ -22,7 +22,8 @@ class ApacheVhostApplication extends Application
     protected function getDefaultCommands()
     {
         $defaultCommands = parent::getDefaultCommands();
-        $defaultCommands[] = new StartCommand($this->fs);
+        // $defaultCommands[] = new StartCommand($this->fs);
+        $defaultCommands[] = new UpdateCommand($this->fs);
         return $defaultCommands;
     }
 
@@ -32,4 +33,10 @@ class ApacheVhostApplication extends Application
         $inputDefinition->setArguments();
         return $inputDefinition;
     }
+
+    // protected function getCommandName(InputInterface $input)
+    // {
+    //     return 'update';
+    // }
+
 }

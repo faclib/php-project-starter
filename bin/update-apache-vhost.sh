@@ -4,9 +4,9 @@ FIND_DIR="/srv"
 DOMAIN_PREFIX=""
 DOMAIN_SUFFIX=".getfobia.ru"
 
-[[ -z "$1" ]] && DOMAIN_PREFIX="$1"
-[[ -z "$2" ]] && DOMAIN_PREFIX="$2"
-[[ -z "$3" ]] && DOMAIN_PREFIX="$3"
+[[ -n "$1" ]] && FIND_DIR="$1"
+[[ -n "$2" ]] && DOMAIN_SUFFIX="$2"
+[[ -n "$3" ]] && DOMAIN_PREFIX="$3"
 
 # ===========================================================
 
@@ -30,19 +30,17 @@ touch  "$TMP_FILE"
 # Vhosts end
 #
 
-find /srv -maxdepth 1 -type d -printf "%p\n" | grep -e '^/srv/' | while read hdir; do
+find "$FIND_DIR" -maxdepth 1 -type d -printf "%p\n" | grep -e "^$FIND_DIR/" | while read hdir; do
     DocumentRoot="$hdir"
-    DOMAIN="${DOMAIN_PREFIX}${hdir/\/srv\//}${DOMAIN_SUFFIX}"
+    DOMAIN="${DOMAIN_PREFIX}${hdir/${FIND_DIR}\//}${DOMAIN_SUFFIX}"
 
     [[ -d "$hdir/web" ]]         && DocumentRoot="$hdir/web"
     [[ -d "$hdir/html" ]]        && DocumentRoot="$hdir/html"
     [[ -d "$hdir/webroot" ]]     && DocumentRoot="$hdir/webroot"
     [[ -d "$hdir/public_html" ]] && DocumentRoot="$hdir/public_html"
     [[ -d "$hdir/public" ]]      && DocumentRoot="$hdir/public"
-    
-    echo "Use VHost $DOMAIN  $DocumentRoot" >> "$TMP_FILE"
 
-    # /usr/bin/php -r
+    echo "Use VHost $DOMAIN  $DocumentRoot" >> "$TMP_FILE"
 done
 
 /usr/bin/php -r '
