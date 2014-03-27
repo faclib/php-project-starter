@@ -1,12 +1,12 @@
 <?php
 
-namespace PhpProject\Console;
+namespace ApacheVhost\Console;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
-class PhpProjectApplication extends Application
+class ApacheVhostApplication extends Application
 {
     /**
      * @var \Symfony\Component\Filesystem\Filesystem
@@ -17,11 +17,6 @@ class PhpProjectApplication extends Application
     {
         $this->fs = $fs;
         parent::__construct($name, $version);
-    }
-
-    protected function getCommandName(InputInterface $input)
-    {
-        return 'start';
     }
 
     protected function getDefaultCommands()
