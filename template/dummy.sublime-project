@@ -1,0 +1,18 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				".git"
+			],
+			"folder_exclude_patterns":
+			[
+				"nbproject",
+				".git"
+			],
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}

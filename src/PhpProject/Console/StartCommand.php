@@ -84,6 +84,18 @@ class StartCommand extends Command
                'The path to the Git binary'
             )
             ->addOption(
+               'sbproject',
+                null,
+               InputOption::VALUE_NONE,
+               'Add sublime-project'
+            )
+            ->addOption(
+               'nbproject',
+                null,
+               InputOption::VALUE_NONE,
+               'Add netbeans-project'
+            )
+            ->addOption(
                'jenkins-url',
                 null,
                InputOption::VALUE_REQUIRED,
@@ -200,6 +212,21 @@ class StartCommand extends Command
             $client->post($jenkinsUrl . '/createItem', $headers, $job, array(
                 'query' => array('name' => $name)
             ))->send();
+        }
+
+        // Create the Sublime Project file.
+        if ($sbproject = $input->getOption('sbproject')) {
+            $filename = 'dummy.sublime-project';
+            $this->copy($filename, $dir);
+            // Rename the dummy class file and add it to the repo
+            $this->fs->rename($dir . '/dummy.sublime-project', $dir . '/' . $name . '.sublime-project' );
+        }
+
+        // Create the Sublime Project file.
+        if ($sbproject = $input->getOption('nbproject')) {
+            $this->fs->mkdir($dir . '/nbproject', 0755);
+            $this->copy('nbproject/project.properties', $dir);
+            $this->copy('nbproject/project.xml', $dir, $replacements);
         }
     }
 
